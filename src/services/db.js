@@ -1,6 +1,6 @@
 // Configuração da API do Google Sheets
 // Esta URL conecta o formulário e o painel de administração à sua planilha do Google Sheets
-const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbzsdNTVdcgv0GSXxXxwjKF7SI7xAumTV2fNbIGc68lrHKfVVFROvqMpcc5F5QLguErL/exec';
+const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbx0qfctBe82gIwEt0bP4nv4Ji8JXvqAv3K3kdgsUuThh-F-aNawQr-qyltWtdw0zkL2/exec';
 export const Io = {
   entities: {
     Resposta: {
