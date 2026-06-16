@@ -59,7 +59,7 @@ export default function FeedbackForm() {
   };
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden" style={{ background: '#f8f8f8' }}>
+    <div className="min-h-screen md:h-screen flex flex-col overflow-x-hidden md:overflow-hidden" style={{ background: '#f8f8f8' }}>
       <AnimatePresence mode="wait">
         {screen === 'question' ? (
           <motion.div
@@ -71,7 +71,7 @@ export default function FeedbackForm() {
             className="flex flex-col flex-1 overflow-hidden"
           >
             {/* Header / Question Section */}
-            <div className="relative flex items-center justify-center pt-6 pb-2 px-16 flex-1">
+            <div className="relative flex items-center justify-center pt-8 pb-4 px-6 md:px-16 flex-1">
               {/* Dots Decorative Grid */}
               <div className="absolute left-8 top-8 grid grid-cols-5 gap-2 opacity-10 pointer-events-none">
                 {Array.from({ length: 25 }).map((_, i) => (
@@ -80,7 +80,7 @@ export default function FeedbackForm() {
               </div>
               
               {/* Background cover image (Director/Store theme layout) */}
-              <div className="absolute right-0 top-0 bottom-0 w-2/5 pointer-events-none overflow-hidden">
+              <div className="hidden md:block absolute right-0 top-0 bottom-0 w-2/5 pointer-events-none overflow-hidden">
                 <img 
                   src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=700&q=80" 
                   alt="" 
@@ -110,8 +110,8 @@ export default function FeedbackForm() {
             </div>
 
             {/* Voting Options Grid */}
-            <div className="px-10 pb-3">
-              <div className="grid grid-cols-5 gap-4">
+            <div className="px-4 md:px-10 pb-6 md:pb-3 flex-1 flex items-center">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4 w-full">
                 {options.map((option, index) => {
                   const Icon = option.icon;
                   return (
@@ -154,7 +154,7 @@ export default function FeedbackForm() {
 
             {/* Footer Trust Indicators */}
             <div 
-              className="flex justify-around items-center py-4 px-8 mt-2"
+              className="flex flex-col sm:flex-row justify-around items-center gap-4 sm:gap-0 py-6 sm:py-4 px-4 sm:px-8 mt-auto md:mt-2"
               style={{
                 background: 'rgba(255, 255, 255, 0.85)',
                 borderTop: '1px solid rgba(0, 0, 0, 0.06)'

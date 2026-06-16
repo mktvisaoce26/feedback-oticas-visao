@@ -98,11 +98,11 @@ export default function AdminDashboard() {
   return (
     <div className="min-h-screen p-8 bg-gray-50">
       {/* Header */}
-      <div className="flex items-center justify-between mb-8">
-        <div className="flex items-center gap-4">
-          <img src={logo} alt="Grupo Visão" className="h-10 object-contain" />
-          <div className="border-l border-gray-200 pl-4">
-            <h1 className="text-2xl font-extrabold text-black">
+      <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0 mb-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+          <img src={logo} alt="Grupo Visão" className="h-10 object-contain hidden sm:block" />
+          <div className="sm:border-l sm:border-gray-200 sm:pl-4">
+            <h1 className="text-xl md:text-2xl font-extrabold text-black">
               Dashboard — Pesquisa de Satisfação
             </h1>
             <p className="text-sm text-gray-400">
@@ -125,7 +125,7 @@ export default function AdminDashboard() {
       ) : (
         <>
           {/* Stat Cards */}
-          <div className="grid grid-cols-3 gap-5 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
             <div className="bg-white rounded-2xl p-6 flex items-center gap-4 shadow-sm border border-gray-100">
               <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-gray-100">
                 <ClipboardList className="w-6 h-6 text-gray-700" />
@@ -160,7 +160,7 @@ export default function AdminDashboard() {
           </div>
 
           {/* Graphics Section */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Recharts BarChart Card */}
             <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
               <h2 className="text-base font-bold mb-5 text-black">Respostas por Motivo</h2>

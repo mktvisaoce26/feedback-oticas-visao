@@ -21,7 +21,7 @@ export default function AdminLogin({ onLoginSuccess }) {
 
   return (
     <div className="h-screen flex items-center justify-center bg-gray-100">
-      <div className="bg-white rounded-2xl shadow-xl p-10 w-full max-w-sm flex flex-col items-center gap-6">
+      <div className="bg-white rounded-2xl shadow-xl p-8 sm:p-10 mx-4 w-full max-w-sm flex flex-col items-center gap-6">
         <img src={logo} alt="Grupo Visão" className="h-12 object-contain" />
         <h2 className="text-xl font-bold text-black">Painel Administrativo</h2>
         
