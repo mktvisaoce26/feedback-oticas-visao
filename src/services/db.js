@@ -1,71 +1,58 @@
-// Simulação do SDK da Base44 utilizando localStorage
-// Isso garante que o projeto rode 100% no GitHub Pages sem a necessidade de backend.
-// Caso queira conectar a um banco de dados real, basta substituir esta implementação.
-
-const STORAGE_KEY = 'feedback_grupo_visao_respostas';
-
-// Respostas padrão (mock inicial para não iniciar vazio)
-const defaultResponses = [
-  { id: '1', motivo: 'Atendimento', motivo_id: 'atendimento', created_date: new Date(Date.now() - 3600000 * 3).toISOString() },
-  { id: '2', motivo: 'Preço', motivo_id: 'preco', created_date: new Date(Date.now() - 3600000 * 2).toISOString() },
-  { id: '3', motivo: 'Promoções e Ofertas', motivo_id: 'promocoes', created_date: new Date(Date.now() - 3600000 * 1).toISOString() },
-  { id: '4', motivo: 'Confiança na Marca', motivo_id: 'confianca_marca', created_date: new Date(Date.now() - 1800000).toISOString() },
-  { id: '5', motivo: 'Produtos e Grifes', motivo_id: 'produtos_grifes', created_date: new Date(Date.now() - 900000).toISOString() }
-];
-
-const getStoredData = () => {
-  const data = localStorage.getItem(STORAGE_KEY);
-  if (!data) {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(defaultResponses));
-    return defaultResponses;
-  }
-  try {
-    return JSON.parse(data);
-  } catch (e) {
-    return defaultResponses;
-  }
-};
-
-const setStoredData = (data) => {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-};
-
+// Configuração da API do Google Sheets
+// Esta URL conecta o formulário e o painel de administração à sua planilha do Google Sheets
+const GOOGLE_SHEETS_API_URL = 'https://script.google.com/macros/s/AKfycbzsdNTVdcgv0GSXxXxwjKF7SI7xAumTV2fNbIGc68lrHKfVVFROvqMpcc5F5QLguErL/exec';
 export const Io = {
   entities: {
     Resposta: {
       create: async (payload) => {
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            const currentData = getStoredData();
-            const newRecord = {
-              id: Math.random().toString(36).substring(2, 9),
-              motivo: payload.motivo,
-              motivo_id: payload.motivo_id,
-              created_date: new Date().toISOString()
-            };
-            currentData.push(newRecord);
-            setStoredData(currentData);
-            resolve(newRecord);
-          }, 400); // Pequeno delay simulando rede
-        });
+        const id = Math.random().toString(36).substring(2, 9);
+        const bodyData = {
+          id: id,
+          motivo: payload.motivo,
+          motivo_id: payload.motivo_id
+        };
+        try {
+          const response = await fetch(GOOGLE_SHEETS_API_URL, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+              'Content-Type': 'text/plain;charset=utf-8', // Evita o pré-vôo CORS do navegador
+            },
+            body: JSON.stringify(bodyData)
+          });
+          
+          if (!response.ok) throw new Error('Erro na rede do Google Sheets');
+          return { id, ...payload };
+        } catch (error) {
+          console.error("Falha ao salvar no Google Sheets, salvando no localStorage como fallback:", error);
+          // Fallback para localStorage caso dê algum erro temporário ou offline
+          const fallbackData = JSON.parse(localStorage.getItem('feedback_fallback') || '[]');
+          const newRecord = { id, ...payload, created_date: new Date().toISOString() };
+          fallbackData.push(newRecord);
+          localStorage.setItem('feedback_fallback', JSON.stringify(fallbackData));
+          return newRecord;
+        }
       },
       list: async (sortParam = '-created_date', limit = 1000) => {
-        return new Promise((resolve) => {
-          setTimeout(() => {
-            let currentData = [...getStoredData()];
-            
-            // Tratamento simplificado de ordenação por data de criação
-            if (sortParam.startsWith('-')) {
-              const field = sortParam.substring(1);
-              currentData.sort((a, b) => new Date(b[field]) - new Date(a[field]));
-            } else {
-              currentData.sort((a, b) => new Date(a[sortParam]) - new Date(b[sortParam]));
-            }
-            
-            // Limitando quantidade de registros
-            resolve(currentData.slice(0, limit));
-          }, 300); // Pequeno delay simulando rede
-        });
+        try {
+          const response = await fetch(GOOGLE_SHEETS_API_URL);
+          if (!response.ok) throw new Error('Erro ao listar do Google Sheets');
+          
+          let data = await response.json();
+          
+          // Ordenação dos registros
+          if (sortParam.startsWith('-')) {
+            const field = sortParam.substring(1);
+            data.sort((a, b) => new Date(b[field]) - new Date(a[field]));
+          } else {
+            data.sort((a, b) => new Date(a[sortParam]) - new Date(b[sortParam]));
+          }
+          
+          return data.slice(0, limit);
+        } catch (error) {
+          console.error("Falha ao ler do Google Sheets:", error);
+          return [];
+        }
       }
     }
   }
