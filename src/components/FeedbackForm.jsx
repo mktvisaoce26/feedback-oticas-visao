@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  DollarSign, 
-  Headphones, 
-  Tag, 
-  ShoppingBag, 
-  ShieldCheck, 
-  Shield, 
-  Award, 
-  Smile 
+import {
+  DollarSign,
+  Headphones,
+  Tag,
+  ShoppingBag,
+  ShieldCheck,
+  Shield,
+  Award,
+  Smile
 } from 'lucide-react';
 import { Io } from '../services/db';
 
@@ -78,13 +78,13 @@ export default function FeedbackForm() {
                   <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#0f2963]"></div>
                 ))}
               </div>
-              
+
               {/* Background cover image (Director/Store theme layout) */}
               <div className="hidden md:block absolute right-0 top-0 bottom-0 w-2/5 pointer-events-none overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=700&q=80" 
-                  alt="" 
-                  className="h-full w-full object-cover object-center" 
+                <img
+                  src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=700&q=80"
+                  alt=""
+                  className="h-full w-full object-cover object-center"
                   style={{
                     maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)'
@@ -94,13 +94,13 @@ export default function FeedbackForm() {
 
               {/* Main Text Content */}
               <div className="relative z-10 flex flex-col items-center text-center max-w-2xl">
-                <img 
-                  src={logo} 
-                  alt="Grupo Visão" 
-                  className="h-24 md:h-28 object-contain mb-5" 
+                <img
+                  src={logo}
+                  alt="Grupo Visão"
+                  className="h-24 md:h-28 object-contain mb-5"
                 />
                 <h1 className="text-3xl md:text-4xl font-extrabold leading-snug text-[#0f2963] max-w-3xl">
-                  Na sua percepção, qual é o principal motivo que leva nossos clientes a comprar em nossas lojas?
+                  QUAL FOI O PRINCIPAL MOTIVO DA SUA COMPRA HOJE?
                 </h1>
                 <div className="w-14 h-1 rounded-full mt-3 mb-4 bg-[#e30613]"></div>
                 <p className="text-base font-medium text-[#5c728e]">
@@ -125,11 +125,11 @@ export default function FeedbackForm() {
                       onClick={() => handleSelect(option)}
                       className="flex flex-col items-center focus:outline-none"
                     >
-                      <div 
+                      <div
                         className="w-full bg-white rounded-2xl flex flex-col items-center py-7 px-3 gap-4"
                         style={{ boxShadow: '0 10px 25px -5px rgba(15, 41, 99, 0.08), 0 8px 16px -6px rgba(15, 41, 99, 0.08)' }}
                       >
-                        <div 
+                        <div
                           className="w-20 h-20 rounded-full flex items-center justify-center"
                           style={{ background: '#eaf2fc' }}
                         >
@@ -137,7 +137,7 @@ export default function FeedbackForm() {
                         </div>
                         <div className="w-8 h-0.5 rounded-full bg-[#e30613]"></div>
                       </div>
-                      <div 
+                      <div
                         className="w-9 h-9 rounded-full flex items-center justify-center -mt-4 z-10 font-bold text-base bg-[#0f2963] text-white"
                         style={{ border: '3px solid #edf3f9' }}
                       >
@@ -153,7 +153,7 @@ export default function FeedbackForm() {
             </div>
 
             {/* Footer Trust Indicators */}
-            <div 
+            <div
               className="flex flex-col sm:flex-row justify-around items-center gap-4 sm:gap-0 py-6 sm:py-4 px-4 sm:px-8 mt-auto md:mt-2"
               style={{
                 background: 'rgba(255, 255, 255, 0.95)',
@@ -200,7 +200,7 @@ export default function FeedbackForm() {
                 </p>
                 {/* Progress bar loader */}
                 <div className="w-48 h-1.5 rounded-full overflow-hidden bg-gray-200 mt-2">
-                  <motion.div 
+                  <motion.div
                     className="h-full rounded-full bg-[#0f2963]"
                     initial={{ width: '100%' }}
                     animate={{ width: '0%' }}
