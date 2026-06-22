@@ -8,8 +8,8 @@
 
 | Ambiente | URL |
 |---|---|
-| **Formulário público** | [`https://mktvisaoce26.github.io/feedback-visao/`](https://mktvisaoce26.github.io/feedback-visao/) |
-| **Painel administrativo** | [`https://mktvisaoce26.github.io/feedback-visao/#/admin`](https://mktvisaoce26.github.io/feedback-visao/#/admin) |
+| **Formulário público** | [`https://mktvisaoce26.github.io/feedback-oticas-visao/`](https://mktvisaoce26.github.io/feedback-oticas-visao/) |
+| **Painel administrativo** | [`https://mktvisaoce26.github.io/feedback-oticas-visao/#/admin`](https://mktvisaoce26.github.io/feedback-oticas-visao/#/admin) |
 
 ---
 
