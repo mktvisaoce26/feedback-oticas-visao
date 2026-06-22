@@ -59,7 +59,7 @@ export default function FeedbackForm() {
   };
 
   return (
-    <div className="min-h-screen md:h-screen flex flex-col overflow-x-hidden md:overflow-hidden" style={{ background: '#f8f8f8' }}>
+    <div className="min-h-screen md:h-screen flex flex-col overflow-x-hidden md:overflow-hidden" style={{ background: 'linear-gradient(135deg, #ebf3fa 0%, #f6f9fd 50%, #e4eef6 100%)' }}>
       <AnimatePresence mode="wait">
         {screen === 'question' ? (
           <motion.div
@@ -73,9 +73,9 @@ export default function FeedbackForm() {
             {/* Header / Question Section */}
             <div className="relative flex items-center justify-center pt-8 pb-4 px-6 md:px-16 flex-1">
               {/* Dots Decorative Grid */}
-              <div className="absolute left-8 top-8 grid grid-cols-5 gap-2 opacity-10 pointer-events-none">
+              <div className="absolute left-8 top-8 grid grid-cols-5 gap-2 opacity-[0.15] pointer-events-none">
                 {Array.from({ length: 25 }).map((_, i) => (
-                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-black"></div>
+                  <div key={i} className="w-1.5 h-1.5 rounded-full bg-[#0f2963]"></div>
                 ))}
               </div>
               
@@ -84,7 +84,7 @@ export default function FeedbackForm() {
                 <img 
                   src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?w=700&q=80" 
                   alt="" 
-                  className="h-full w-full object-cover object-center grayscale" 
+                  className="h-full w-full object-cover object-center" 
                   style={{
                     maskImage: 'linear-gradient(to left, black 50%, transparent 100%)',
                     WebkitMaskImage: 'linear-gradient(to left, black 50%, transparent 100%)'
@@ -99,11 +99,11 @@ export default function FeedbackForm() {
                   alt="Grupo Visão" 
                   className="h-24 md:h-28 object-contain mb-5" 
                 />
-                <h1 className="text-3xl md:text-4xl font-extrabold leading-snug text-black max-w-3xl">
+                <h1 className="text-3xl md:text-4xl font-extrabold leading-snug text-[#0f2963] max-w-3xl">
                   Na sua percepção, qual é o principal motivo que leva nossos clientes a comprar em nossas lojas?
                 </h1>
-                <div className="w-14 h-1 rounded-full mt-3 mb-4 bg-black"></div>
-                <p className="text-base font-medium text-gray-500">
+                <div className="w-14 h-1 rounded-full mt-3 mb-4 bg-[#e30613]"></div>
+                <p className="text-base font-medium text-[#5c728e]">
                   Sua opinião nos ajuda a melhorar cada vez mais! ♡
                 </p>
               </div>
@@ -127,23 +127,23 @@ export default function FeedbackForm() {
                     >
                       <div 
                         className="w-full bg-white rounded-2xl flex flex-col items-center py-7 px-3 gap-4"
-                        style={{ boxShadow: '0 4px 20px rgba(0,0,0,0.08)' }}
+                        style={{ boxShadow: '0 10px 25px -5px rgba(15, 41, 99, 0.08), 0 8px 16px -6px rgba(15, 41, 99, 0.08)' }}
                       >
                         <div 
                           className="w-20 h-20 rounded-full flex items-center justify-center"
-                          style={{ background: '#f0f0f0' }}
+                          style={{ background: '#eaf2fc' }}
                         >
-                          <Icon className="w-10 h-10 text-black" strokeWidth={1.5} />
+                          <Icon className="w-10 h-10 text-[#0f2963]" strokeWidth={1.5} />
                         </div>
-                        <div className="w-8 h-0.5 rounded-full bg-black"></div>
+                        <div className="w-8 h-0.5 rounded-full bg-[#e30613]"></div>
                       </div>
                       <div 
-                        className="w-9 h-9 rounded-full flex items-center justify-center -mt-4 z-10 font-bold text-base bg-black text-white"
-                        style={{ border: '3px solid #f8f8f8' }}
+                        className="w-9 h-9 rounded-full flex items-center justify-center -mt-4 z-10 font-bold text-base bg-[#0f2963] text-white"
+                        style={{ border: '3px solid #edf3f9' }}
                       >
                         {index + 1}
                       </div>
-                      <p className="mt-2 text-center font-semibold text-sm leading-snug whitespace-pre-line text-black">
+                      <p className="mt-2 text-center font-semibold text-sm leading-snug whitespace-pre-line text-[#0f2963]">
                         {option.label}
                       </p>
                     </motion.button>
@@ -156,8 +156,8 @@ export default function FeedbackForm() {
             <div 
               className="flex flex-col sm:flex-row justify-around items-center gap-4 sm:gap-0 py-6 sm:py-4 px-4 sm:px-8 mt-auto md:mt-2"
               style={{
-                background: 'rgba(255, 255, 255, 0.85)',
-                borderTop: '1px solid rgba(0, 0, 0, 0.06)'
+                background: 'rgba(255, 255, 255, 0.95)',
+                borderTop: '1px solid rgba(15, 41, 99, 0.08)'
               }}
             >
               {[
@@ -166,10 +166,10 @@ export default function FeedbackForm() {
                 { icon: Smile, title: 'Clientes satisfeitos', sub: 'Nossa maior recompensa' }
               ].map(({ icon: Icon, title, sub }) => (
                 <div key={title} className="flex items-center gap-3">
-                  <Icon className="w-8 h-8 shrink-0 text-gray-700" strokeWidth={1.5} />
+                  <Icon className="w-8 h-8 shrink-0 text-[#0f2963]" strokeWidth={1.5} />
                   <div className="text-left">
-                    <p className="font-bold text-sm text-black">{title}</p>
-                    <p className="text-xs text-gray-500">{sub}</p>
+                    <p className="font-bold text-sm text-[#0f2963]">{title}</p>
+                    <p className="text-xs text-[#5c728e]">{sub}</p>
                   </div>
                 </div>
               ))}
@@ -191,8 +191,8 @@ export default function FeedbackForm() {
                 transition={{ delay: 0.15, type: 'spring', stiffness: 120, damping: 18 }}
                 className="flex flex-col gap-3 text-center md:text-left items-center md:items-start"
               >
-                <h2 className="text-4xl md:text-6xl font-extrabold text-black">Obrigado!</h2>
-                <p className="text-lg md:text-xl font-medium text-gray-700 font-sans">
+                <h2 className="text-4xl md:text-6xl font-extrabold text-[#0f2963]">Obrigado!</h2>
+                <p className="text-lg md:text-xl font-medium text-[#5c728e] font-sans">
                   Sua resposta foi enviada com sucesso.
                 </p>
                 <p className="text-sm font-semibold text-gray-400 mt-2">
@@ -201,7 +201,7 @@ export default function FeedbackForm() {
                 {/* Progress bar loader */}
                 <div className="w-48 h-1.5 rounded-full overflow-hidden bg-gray-200 mt-2">
                   <motion.div 
-                    className="h-full rounded-full bg-black"
+                    className="h-full rounded-full bg-[#0f2963]"
                     initial={{ width: '100%' }}
                     animate={{ width: '0%' }}
                     transition={{ duration: 4, ease: 'linear' }}
